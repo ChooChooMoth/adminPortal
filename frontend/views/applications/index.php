@@ -18,7 +18,20 @@ $this->params['breadcrumbs'][] = $this->title;
     if (User::isUserAdmin(Yii::$app->user->identity->username)) {
 
         echo Html::a('Create Applications', ['create'], ['class' => 'btn btn-success']);
-        $actionColumn = ['class' => 'yii\grid\ActionColumn'];
+        $actionColumn = ['class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update} {delete}',
+            'buttons' => [
+                'delete' => function($url, $model){
+                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'id' => $model->app_id], [
+                        'class' => '',
+                        'data' => [
+                            'confirm' => "Are you sure you want to delete $model->app_name from $this->title?",
+                            'method' => 'post',
+                        ],
+                    ]);
+                }
+            ]
+        ];
     }
     else{
         $actionColumn =   ['class' => 'yii\grid\ActionColumn',

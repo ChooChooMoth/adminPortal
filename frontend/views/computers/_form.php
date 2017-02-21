@@ -4,13 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Computers */
+/* @var $model frontend\models\Computers */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="computers-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php
+    $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'computer_name')->textInput(['maxlength' => true]) ?>
 

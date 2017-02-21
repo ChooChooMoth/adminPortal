@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'AdminPortal',
-        'brandUrl' => ['/site/login'],
+        'brandUrl' => ['/site/index'],
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -41,6 +41,7 @@ AppAsset::register($this);
     }
     elseif (User::isUserAdmin(Yii::$app->user->identity->username)) {
         $menuItems = [
+            ['label' => 'CompAppRelations', 'url' => ['/computer-app/index']],
             ['label' => 'Users', 'url' => ['/users/index']],
             ['label' => 'Computers', 'url' => ['/computers/index']],
             ['label' => 'Applications', 'url' => ['/applications/index']],

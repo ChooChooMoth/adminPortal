@@ -2,7 +2,6 @@
 
 namespace frontend\models;
 
-use Yii;
 
 /**
  * This is the model class for table "computers".
@@ -45,6 +44,19 @@ class Computers extends \yii\db\ActiveRecord
             'ip_adress' => 'Ip Adress',
             'login' => 'Login',
             'password' => 'Password',
+            'app_id' => 'Application ID',
+            'app_name' => 'Application Name',
+            'vendor_name' => 'Vendor',
+            'licence_required' => 'Licence Required',
         ];
+    }
+    public function getCompApps()
+    {
+        return $this->hasMany(ComputerApp::className(), ['computer_id' => 'computer_id']);
+    }
+    public function getApplications()
+    {
+        return $this->hasMany(Applications::className(), ['app_id' => 'app_id'])
+            ->viaTable('computer_app', ['computer_id' => 'computer_id']);
     }
 }
