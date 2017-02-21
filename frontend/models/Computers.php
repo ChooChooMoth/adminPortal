@@ -50,10 +50,6 @@ class Computers extends \yii\db\ActiveRecord
             'licence_required' => 'Licence Required',
         ];
     }
-    public function getCompApps()
-    {
-        return $this->hasMany(ComputerApp::className(), ['computer_id' => 'computer_id']);
-    }
     public function getApplications()
     {
         return $this->hasMany(Applications::className(), ['app_id' => 'app_id'])
